@@ -48,11 +48,10 @@ namespace ZX_Screen
             //Подготовка поля (на случай если данных меньше чем входит в видеопамять
             byte[] m = new byte[6912];
             for (int i = 6144; i < 6912; i++) m[i] = 56;
-            int j = Math.Min(data.Count() - 1, 6913);
             for (int i = 0; i < 6912; i++)
             {
-                int a = i;// + (int)numericUpDown2.Value;
-                if (a >= 0 & a <= data.Count() - 2)
+                int a = i;
+                if (a >= 0 & a <= data.Count() - 1)
                     m[i] = data[a];
             }
             //Собственно, рисование

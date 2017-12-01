@@ -17,7 +17,7 @@ namespace ZX_Screen
         public FormMain()
         {
             InitializeComponent();
-            Locate = "C:\\";
+            Locate = "D:\\Swap";
             ReadDir();
         }
 
