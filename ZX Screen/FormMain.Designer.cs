@@ -40,6 +40,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             this.Explorer.TabIndex = 0;
             this.Explorer.TileSize = new System.Drawing.Size(184, 30);
             this.Explorer.UseCompatibleStateImageBehavior = false;
+            this.Explorer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Explorer_KeyDown);
             this.Explorer.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Explorer_MouseDoubleClick);
             // 
             // imageList1
@@ -90,19 +92,19 @@
             // 
             this.вверхToolStripMenuItem.Image = global::ZX_Screen.Properties.Resources.Up;
             this.вверхToolStripMenuItem.Name = "вверхToolStripMenuItem";
-            this.вверхToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.вверхToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.вверхToolStripMenuItem.Text = "Вверх";
             this.вверхToolStripMenuItem.Click += new System.EventHandler(this.вверхToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(105, 6);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
@@ -117,7 +119,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripTextBox1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(738, 25);
@@ -133,6 +136,11 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "Вверх";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(500, 25);
             // 
             // FormMain
             // 
@@ -167,6 +175,7 @@
         private System.Windows.Forms.ToolStripMenuItem вверхToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
     }
 }
 

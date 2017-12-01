@@ -17,12 +17,13 @@ namespace ZX_Screen
         public FormMain()
         {
             InitializeComponent();
-            Locate = "D:\\Swap";
+            Locate = "C:\\";
             ReadDir();
         }
 
         void ReadDir()
         {
+            toolStripTextBox1.Text = Locate;
             Explorer.Items.Clear();
             foreach (string folder in Directory.GetDirectories(Locate))
             {
@@ -55,7 +56,8 @@ namespace ZX_Screen
             ListViewItem item = Explorer.SelectedItems[0];
             if (item.SubItems[1].Text == "Folder")
             {
-                Locate = Locate + item.Text;
+                if (Locate.Length > 3) Locate += "\\";
+                Locate += item.Text;
                 ReadDir();
             }
             if (item.SubItems[1].Text == "SCR")
@@ -77,6 +79,12 @@ namespace ZX_Screen
                 Locate = Path.GetDirectoryName(Locate);
                 ReadDir();
             }
+        }
+
+        private void Explorer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) Explorer_MouseDoubleClick(null, null);
+            if (e.KeyCode == Keys.Back) вверхToolStripMenuItem_Click(null, null);
         }
     }
 }
