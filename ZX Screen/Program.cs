@@ -12,10 +12,16 @@ namespace ZX_Screen
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            if (args.Count() > 0)
+            {
+                FormView view = new FormView(args[0]);
+                view.ShowDialog();
+                return;                
+            }
             Application.Run(new FormMain());
         }
     }
