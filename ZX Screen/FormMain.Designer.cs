@@ -34,13 +34,15 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вверхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.переходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вверхToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.выборПапкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,7 +73,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.переходToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(738, 24);
@@ -81,25 +84,10 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.вверхToolStripMenuItem,
-            this.toolStripMenuItem1,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
-            // 
-            // вверхToolStripMenuItem
-            // 
-            this.вверхToolStripMenuItem.Image = global::ZX_Screen.Properties.Resources.Up;
-            this.вверхToolStripMenuItem.Name = "вверхToolStripMenuItem";
-            this.вверхToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
-            this.вверхToolStripMenuItem.Text = "Вверх";
-            this.вверхToolStripMenuItem.Click += new System.EventHandler(this.вверхToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(105, 6);
             // 
             // выходToolStripMenuItem
             // 
@@ -120,10 +108,12 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
-            this.toolStripTextBox1});
+            this.toolStripTextBox1,
+            this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(738, 25);
+            this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -141,6 +131,41 @@
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(500, 25);
+            this.toolStripTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox1_KeyDown);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(84, 22);
+            this.toolStripButton2.Text = "Выбор папки";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // переходToolStripMenuItem
+            // 
+            this.переходToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вверхToolStripMenuItem1,
+            this.выборПапкиToolStripMenuItem});
+            this.переходToolStripMenuItem.Name = "переходToolStripMenuItem";
+            this.переходToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.переходToolStripMenuItem.Text = "Переход";
+            // 
+            // вверхToolStripMenuItem1
+            // 
+            this.вверхToolStripMenuItem1.Image = global::ZX_Screen.Properties.Resources.Up;
+            this.вверхToolStripMenuItem1.Name = "вверхToolStripMenuItem1";
+            this.вверхToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.вверхToolStripMenuItem1.Text = "Вверх";
+            this.вверхToolStripMenuItem1.Click += new System.EventHandler(this.вверхToolStripMenuItem1_Click);
+            // 
+            // выборПапкиToolStripMenuItem
+            // 
+            this.выборПапкиToolStripMenuItem.Name = "выборПапкиToolStripMenuItem";
+            this.выборПапкиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выборПапкиToolStripMenuItem.Text = "Выбор папки";
+            this.выборПапкиToolStripMenuItem.Click += new System.EventHandler(this.выборПапкиToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -154,6 +179,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.Text = "ZX Screen";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -172,10 +198,12 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripMenuItem вверхToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripMenuItem переходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вверхToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem выборПапкиToolStripMenuItem;
     }
 }
 

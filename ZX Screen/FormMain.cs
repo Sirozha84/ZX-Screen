@@ -17,7 +17,8 @@ namespace ZX_Screen
         public FormMain()
         {
             InitializeComponent();
-            Locate = "D:\\Swap";
+            Locate = Properties.Settings.Default.Dir;
+            if (Locate == "") Locate = Directory.GetCurrentDirectory();
             ReadDir();
         }
 
@@ -67,12 +68,14 @@ namespace ZX_Screen
             }
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+
+        private void Explorer_KeyDown(object sender, KeyEventArgs e)
         {
-            вверхToolStripMenuItem_Click(null, null);
+            if (e.KeyCode == Keys.Enter) Explorer_MouseDoubleClick(null, null);
+            if (e.KeyCode == Keys.Back) вверхToolStripMenuItem1_Click(null, null);
         }
 
-        private void вверхToolStripMenuItem_Click(object sender, EventArgs e)
+        private void вверхToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (Path.GetDirectoryName(Locate) != null)
             {
@@ -81,10 +84,36 @@ namespace ZX_Screen
             }
         }
 
-        private void Explorer_KeyDown(object sender, KeyEventArgs e)
+        private void выборПапкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) Explorer_MouseDoubleClick(null, null);
-            if (e.KeyCode == Keys.Back) вверхToolStripMenuItem_Click(null, null);
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK) ChangeDir(dialog.SelectedPath);
+
+        }
+
+        void ChangeDir(string dir)
+        {
+            if (dir.Length < 3) dir += "\\";
+            if (Directory.Exists(dir))
+            {
+                Locate = dir;
+            }
+                ReadDir();
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.Dir = Locate;
+            Properties.Settings.Default.Save();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e) { вверхToolStripMenuItem1_Click(null, null); }
+        private void toolStripButton2_Click(object sender, EventArgs e) { выборПапкиToolStripMenuItem_Click(null, null); }
+
+        private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                ChangeDir(toolStripTextBox1.Text);
         }
     }
 }
