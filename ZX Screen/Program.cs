@@ -8,6 +8,7 @@ namespace ZX_Screen
 {
     static class Program
     {
+        public static string Date = "06.12.2017";
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

@@ -34,5 +34,17 @@ namespace ZX_Screen.Properties {
                 this["Dir"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilesSCR {
+            get {
+                return ((bool)(this["FilesSCR"]));
+            }
+            set {
+                this["FilesSCR"] = value;
+            }
+        }
     }
 }

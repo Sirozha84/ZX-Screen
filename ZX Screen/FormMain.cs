@@ -115,5 +115,19 @@ namespace ZX_Screen
             if (e.KeyCode == Keys.Enter)
                 ChangeDir(toolStripTextBox1.Text);
         }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Application.ProductName + "\n" +
+                "Версия: " + Application.ProductVersion + " (" + Program.Date + ")\n" +
+                "Автор: Сергей Гордеев",
+                "О " + Application.ProductName);
+        }
+
+        private void параметрыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormOptions options = new FormOptions();
+            options.ShowDialog();
+        }
     }
 }

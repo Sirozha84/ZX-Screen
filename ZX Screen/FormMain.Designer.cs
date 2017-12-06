@@ -35,14 +35,18 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.переходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вверхToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.выборПапкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.переходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вверхToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.выборПапкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сервисToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.параметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +78,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
-            this.переходToolStripMenuItem});
+            this.переходToolStripMenuItem,
+            this.сервисToolStripMenuItem,
+            this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(738, 24);
@@ -95,6 +101,30 @@
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // переходToolStripMenuItem
+            // 
+            this.переходToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вверхToolStripMenuItem1,
+            this.выборПапкиToolStripMenuItem});
+            this.переходToolStripMenuItem.Name = "переходToolStripMenuItem";
+            this.переходToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.переходToolStripMenuItem.Text = "Переход";
+            // 
+            // вверхToolStripMenuItem1
+            // 
+            this.вверхToolStripMenuItem1.Image = global::ZX_Screen.Properties.Resources.Up;
+            this.вверхToolStripMenuItem1.Name = "вверхToolStripMenuItem1";
+            this.вверхToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.вверхToolStripMenuItem1.Text = "Вверх";
+            this.вверхToolStripMenuItem1.Click += new System.EventHandler(this.вверхToolStripMenuItem1_Click);
+            // 
+            // выборПапкиToolStripMenuItem
+            // 
+            this.выборПапкиToolStripMenuItem.Name = "выборПапкиToolStripMenuItem";
+            this.выборПапкиToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.выборПапкиToolStripMenuItem.Text = "Выбор папки";
+            this.выборПапкиToolStripMenuItem.Click += new System.EventHandler(this.выборПапкиToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -143,29 +173,35 @@
             this.toolStripButton2.Text = "Выбор папки";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // переходToolStripMenuItem
+            // сервисToolStripMenuItem
             // 
-            this.переходToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.вверхToolStripMenuItem1,
-            this.выборПапкиToolStripMenuItem});
-            this.переходToolStripMenuItem.Name = "переходToolStripMenuItem";
-            this.переходToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.переходToolStripMenuItem.Text = "Переход";
+            this.сервисToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.параметрыToolStripMenuItem});
+            this.сервисToolStripMenuItem.Name = "сервисToolStripMenuItem";
+            this.сервисToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.сервисToolStripMenuItem.Text = "Сервис";
             // 
-            // вверхToolStripMenuItem1
+            // параметрыToolStripMenuItem
             // 
-            this.вверхToolStripMenuItem1.Image = global::ZX_Screen.Properties.Resources.Up;
-            this.вверхToolStripMenuItem1.Name = "вверхToolStripMenuItem1";
-            this.вверхToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.вверхToolStripMenuItem1.Text = "Вверх";
-            this.вверхToolStripMenuItem1.Click += new System.EventHandler(this.вверхToolStripMenuItem1_Click);
+            this.параметрыToolStripMenuItem.Name = "параметрыToolStripMenuItem";
+            this.параметрыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.параметрыToolStripMenuItem.Text = "Параметры";
+            this.параметрыToolStripMenuItem.Click += new System.EventHandler(this.параметрыToolStripMenuItem_Click);
             // 
-            // выборПапкиToolStripMenuItem
+            // справкаToolStripMenuItem
             // 
-            this.выборПапкиToolStripMenuItem.Name = "выборПапкиToolStripMenuItem";
-            this.выборПапкиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.выборПапкиToolStripMenuItem.Text = "Выбор папки";
-            this.выборПапкиToolStripMenuItem.Click += new System.EventHandler(this.выборПапкиToolStripMenuItem_Click);
+            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оПрограммеToolStripMenuItem});
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -204,6 +240,10 @@
         private System.Windows.Forms.ToolStripMenuItem переходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вверхToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem выборПапкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сервисToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem параметрыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
     }
 }
 
