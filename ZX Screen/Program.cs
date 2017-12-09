@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ZX_Screen
 {
     static class Program
     {
-        public static string Date = "08.12.2017";
+        public static string Date = "09.12.2017";
         public static string Site = "www.sg-software.ru";
         public static string Url = "http://www.sg-software.ru";
         /// <summary>

@@ -75,7 +75,7 @@ namespace ZX_Screen.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap ZX_Screen {
             get {
-                object obj = ResourceManager.GetObject("ZX Screen", resourceCulture);
+                object obj = ResourceManager.GetObject("ZX_Screen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

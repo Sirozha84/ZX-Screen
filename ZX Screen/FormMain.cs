@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -17,9 +10,6 @@ namespace ZX_Screen
         public FormMain()
         {
             InitializeComponent();
-            Locate = Properties.Settings.Default.Dir;
-            if (Locate == "") Locate = Directory.GetCurrentDirectory();
-            ReadDir();
         }
 
         void ReadDir()
@@ -101,12 +91,6 @@ namespace ZX_Screen
                 ReadDir();
         }
 
-        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Properties.Settings.Default.Dir = Locate;
-            Properties.Settings.Default.Save();
-        }
-
         private void toolStripButton1_Click(object sender, EventArgs e) { вверхToolStripMenuItem1_Click(null, null); }
         private void toolStripButton2_Click(object sender, EventArgs e) { выборПапкиToolStripMenuItem_Click(null, null); }
 
@@ -126,6 +110,27 @@ namespace ZX_Screen
         {
             FormOptions options = new FormOptions();
             options.ShowDialog();
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Dir = Locate;
+            Properties.Settings.Default.Left = Left;
+            Properties.Settings.Default.Top = Top;
+            Properties.Settings.Default.Width = Width;
+            Properties.Settings.Default.Height = Height;
+            Properties.Settings.Default.Save();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            Locate = Properties.Settings.Default.Dir;
+            Left = Properties.Settings.Default.Left;
+            Top = Properties.Settings.Default.Top;
+            Width = Properties.Settings.Default.Width;
+            Height = Properties.Settings.Default.Height;
+            if (Locate == "") Locate = Directory.GetCurrentDirectory();
+            ReadDir();
         }
     }
 }
