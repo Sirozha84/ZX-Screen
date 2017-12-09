@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.tabPageAssotiation = new System.Windows.Forms.TabPage();
+            this.buttonAssociacion = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxSCR = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.checkBoxSCR = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabPageAssotiation.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPageAssotiation
             // 
+            this.tabPageAssotiation.Controls.Add(this.buttonAssociacion);
             this.tabPageAssotiation.Controls.Add(this.label1);
             this.tabPageAssotiation.Controls.Add(this.checkBoxSCR);
             this.tabPageAssotiation.Location = new System.Drawing.Point(4, 22);
@@ -49,6 +51,37 @@
             this.tabPageAssotiation.TabIndex = 0;
             this.tabPageAssotiation.Text = "Ассоциация файлов";
             this.tabPageAssotiation.UseVisualStyleBackColor = true;
+            // 
+            // buttonAssociacion
+            // 
+            this.buttonAssociacion.Location = new System.Drawing.Point(9, 42);
+            this.buttonAssociacion.Name = "buttonAssociacion";
+            this.buttonAssociacion.Size = new System.Drawing.Size(126, 23);
+            this.buttonAssociacion.TabIndex = 2;
+            this.buttonAssociacion.Text = "Ассоциировать";
+            this.buttonAssociacion.UseVisualStyleBackColor = true;
+            this.buttonAssociacion.Click += new System.EventHandler(this.buttonAssociacion_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(311, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Выберите файлы, которые будут открываться в программе";
+            // 
+            // checkBoxSCR
+            // 
+            this.checkBoxSCR.AutoSize = true;
+            this.checkBoxSCR.Checked = true;
+            this.checkBoxSCR.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxSCR.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxSCR.Name = "checkBoxSCR";
+            this.checkBoxSCR.Size = new System.Drawing.Size(48, 17);
+            this.checkBoxSCR.TabIndex = 0;
+            this.checkBoxSCR.Text = "SCR";
+            this.checkBoxSCR.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -85,25 +118,6 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // checkBoxSCR
-            // 
-            this.checkBoxSCR.AutoSize = true;
-            this.checkBoxSCR.Location = new System.Drawing.Point(9, 19);
-            this.checkBoxSCR.Name = "checkBoxSCR";
-            this.checkBoxSCR.Size = new System.Drawing.Size(48, 17);
-            this.checkBoxSCR.TabIndex = 0;
-            this.checkBoxSCR.Text = "SCR";
-            this.checkBoxSCR.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(311, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Выберите файлы, которые будут открываться в программе";
-            // 
             // FormOptions
             // 
             this.AcceptButton = this.buttonOK;
@@ -137,5 +151,6 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.CheckBox checkBoxSCR;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonAssociacion;
     }
 }

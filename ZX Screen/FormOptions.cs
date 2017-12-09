@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 
 namespace ZX_Screen
 {
@@ -21,7 +22,6 @@ namespace ZX_Screen
 
         private void FormOptions_Load(object sender, EventArgs e)
         {
-            checkBoxSCR.Checked = Properties.Settings.Default.FilesSCR;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -31,28 +31,15 @@ namespace ZX_Screen
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.FilesSCR != checkBoxSCR.Checked)
-            {
-                Properties.Settings.Default.FilesSCR = checkBoxSCR.Checked;
-                //Тут делаем самое страшное...
-                FILE_EXTENSION = ".scr";
-                if (checkBoxSCR.Checked)
-                    Associate("Изображение ZX Screen", "");
-                else
-                    Remove();
-            }
             Properties.Settings.Default.Save();
             Close();
         }
 
-
-        private static string FILE_EXTENSION;
         private const long SHCNE_ASSOCCHANGED = 0x8000000L;
         private const uint SHCNF_IDLIST = 0x0U;
-
-        public static void Associate(string description, string icon)
+        public static void Associate(string extention, string description, string icon)
         {
-            Registry.ClassesRoot.CreateSubKey(FILE_EXTENSION).SetValue("", Application.ProductName);
+            Registry.ClassesRoot.CreateSubKey(extention).SetValue("", Application.ProductName);
 
             if (Application.ProductName != null && Application.ProductName.Length > 0)
             {
@@ -71,17 +58,6 @@ namespace ZX_Screen
             SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, IntPtr.Zero, IntPtr.Zero);
         }
 
-        public static bool IsAssociated
-        {
-            get { return (Registry.ClassesRoot.OpenSubKey(FILE_EXTENSION, false) != null); }
-        }
-
-        public static void Remove()
-        {
-            Registry.ClassesRoot.DeleteSubKeyTree(FILE_EXTENSION);
-            Registry.ClassesRoot.DeleteSubKeyTree(Application.ProductName);
-        }
-
         [DllImport("shell32.dll", SetLastError = true)]
         private static extern void SHChangeNotify(long wEventId, uint uFlags, IntPtr dwItem1, IntPtr dwItem2);
 
@@ -96,5 +72,26 @@ namespace ZX_Screen
             return s.ToString();
         }
 
+        private void buttonAssociacion_Click(object sender, EventArgs e)
+        {
+            WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            if (principal.IsInRole(WindowsBuiltInRole.Administrator))
+            {
+                try
+                {
+                    if (checkBoxSCR.Checked) Associate(".scr", "Изображение ZX Screen", "Up");
+                    MessageBox.Show("Ассоциация выполнена успешно.",
+                        Application.ProductName);
+                }
+                catch
+                {
+                    MessageBox.Show("Произошла непредвиденная ошибка.",
+                        Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                MessageBox.Show("Для этого запустите программу с правами администратора.",
+                        Application.ProductName);
+        }
     }
 }

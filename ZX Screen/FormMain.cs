@@ -118,10 +118,8 @@ namespace ZX_Screen
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Application.ProductName + "\n" +
-                "Версия: " + Application.ProductVersion + " (" + Program.Date + ")\n" +
-                "Автор: Сергей Гордеев",
-                "О " + Application.ProductName);
+            FormAbout about = new FormAbout();
+            about.ShowDialog();
         }
 
         private void параметрыToolStripMenuItem_Click(object sender, EventArgs e)
