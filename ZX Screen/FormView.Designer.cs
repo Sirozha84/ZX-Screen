@@ -54,7 +54,7 @@
             this.Name = "FormView";
             this.Text = "FormView";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormView_KeyPress);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormView_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

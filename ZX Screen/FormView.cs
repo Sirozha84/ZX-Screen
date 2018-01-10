@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ZX_Screen
 {
@@ -39,10 +40,21 @@ namespace ZX_Screen
                           20672,20928,21184,21440,21696,21952,22208,22464,
                           20704,20960,21216,21472,21728,21984,22240,22496};
 
+        string[] Files;
+        int index;
+
         public FormView(string File)
         {
             InitializeComponent();
             Text = File;
+            DrawPicture(File);
+            //Получим список файлов в текущей директории, количество файлов и индекс текущего.
+            Files = Directory.GetFiles(Directory.GetParent(File).ToString());
+            index = Array.IndexOf(Files, File);
+        }
+
+        void DrawPicture(string File)
+        {
             byte[] data = System.IO.File.ReadAllBytes(File);
             Bitmap screen = new Bitmap(256, 192);
             //Подготовка поля (на случай если данных меньше чем входит в видеопамять
@@ -73,11 +85,7 @@ namespace ZX_Screen
                 }
             }
             pictureBox1.Image = screen;
-        }
 
-        private void FormView_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Close();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -106,6 +114,25 @@ namespace ZX_Screen
                 return palette[(attr & 56) / 8];
             else
                 return palette[(attr & 56) / 8 + 8];
+        }
+
+        private void FormView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left | e.KeyCode == Keys.PageUp)
+            {
+                index--;
+                if (index < 0) index = Files.Count() - 1;
+                DrawPicture(Files[index]);
+                return;
+            }
+            if (e.KeyCode == Keys.Right | e.KeyCode == Keys.PageDown)
+            {
+                index++;
+                if (index > Files.Count() - 1) index = 0;
+                DrawPicture(Files[index]);
+                return;
+            }
+            Close();
         }
     }
 }
