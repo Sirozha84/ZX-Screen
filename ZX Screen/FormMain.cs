@@ -54,7 +54,8 @@ namespace ZX_Screen
             if (item.SubItems[1].Text == "SCR")
             {
                 FormView view = new FormView(Locate + "\\" + item.Text + ".scr");
-                view.ShowDialog();
+                if (view.ShowDialog() == DialogResult.Abort)
+                    ReadDir();
             }
         }
 

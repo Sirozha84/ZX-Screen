@@ -55,7 +55,18 @@ namespace ZX_Screen
 
         void DrawPicture(string File)
         {
-            byte[] data = System.IO.File.ReadAllBytes(File);
+            byte[] data = new byte[0];
+            try
+            {
+                data = System.IO.File.ReadAllBytes(File);
+            }
+            catch
+            {
+                MessageBox.Show("Произошла ошибка при загрузке файла " + File,
+                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.Abort;
+                Close();
+            }
             Bitmap screen = new Bitmap(256, 192);
             //Подготовка поля (на случай если данных меньше чем входит в видеопамять
             byte[] m = new byte[6912];
@@ -118,6 +129,8 @@ namespace ZX_Screen
 
         private void FormView_KeyDown(object sender, KeyEventArgs e)
         {
+            //Листание картинок если их больше одной
+            if (Files.Count() < 2) return;
             if (e.KeyCode == Keys.Left | e.KeyCode == Keys.PageUp)
             {
                 index--;
@@ -129,6 +142,18 @@ namespace ZX_Screen
             {
                 index++;
                 if (index > Files.Count() - 1) index = 0;
+                DrawPicture(Files[index]);
+                return;
+            }
+            if (e.KeyCode == Keys.Home)
+            {
+                index = 0;
+                DrawPicture(Files[index]);
+                return;
+            }
+            if (e.KeyCode == Keys.End)
+            {
+                index = Files.Count() - 1;
                 DrawPicture(Files[index]);
                 return;
             }
