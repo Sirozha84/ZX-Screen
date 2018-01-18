@@ -17,6 +17,7 @@ namespace ZX_Screen
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Palette.Init();
             if (args.Count() > 0)
             {
                 FormView view = new FormView(args[0]);

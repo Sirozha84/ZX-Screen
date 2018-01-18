@@ -39,7 +39,8 @@ namespace ZX_Screen
                           20640,20896,21152,21408,21664,21920,22176,22432,
                           20672,20928,21184,21440,21696,21952,22208,22464,
                           20704,20960,21216,21472,21728,21984,22240,22496};
-
+        Color[] Col;
+        byte[] Data;
         string[] Files;
         int index;
 
@@ -47,18 +48,23 @@ namespace ZX_Screen
         {
             InitializeComponent();
             Text = File;
-            DrawPicture(File);
+            Palette.GetPal(ref Col);
+            OpenPicture(File);
             //Получим список файлов в текущей директории, количество файлов и индекс текущего.
             Files = Directory.GetFiles(Directory.GetParent(File).ToString());
             index = Array.IndexOf(Files, File);
         }
 
-        void DrawPicture(string File)
+        /// <summary>
+        /// Открываем файл и рисуем картинку
+        /// </summary>
+        /// <param name="File">Файл</param>
+        void OpenPicture(string File)
         {
-            byte[] data = new byte[0];
+            Data = new byte[0];
             try
             {
-                data = System.IO.File.ReadAllBytes(File);
+                Data = System.IO.File.ReadAllBytes(File);
             }
             catch
             {
@@ -67,6 +73,14 @@ namespace ZX_Screen
                 DialogResult = DialogResult.Abort;
                 Close();
             }
+            DrawPicture();
+        }
+
+        /// <summary>
+        /// Рисуем (перерисовываем) картинку
+        /// </summary>
+        void DrawPicture()
+        {
             Bitmap screen = new Bitmap(256, 192);
             //Подготовка поля (на случай если данных меньше чем входит в видеопамять
             byte[] m = new byte[6912];
@@ -74,8 +88,8 @@ namespace ZX_Screen
             for (int i = 0; i < 6912; i++)
             {
                 int a = i;
-                if (a >= 0 & a <= data.Count() - 1)
-                    m[i] = data[a];
+                if (a >= 0 & a <= Data.Count() - 1)
+                    m[i] = Data[a];
             }
             //Собственно, рисование
             byte C = 0;
@@ -111,20 +125,16 @@ namespace ZX_Screen
         //Возвращает цвет точки по атрибуту (в зависимости включен пиксель или нет)
         Color Pixel(byte attr, bool PixelON)
         {
-            Color[] palette = {Color.FromArgb(0,0,0), Color.FromArgb(0,0,210), Color.FromArgb(210,0,0), Color.FromArgb(210,0,210),
-                               Color.FromArgb(0,210,0), Color.FromArgb(0,210,210), Color.FromArgb(210,210,0), Color.FromArgb(210,210,210),
-                               Color.FromArgb(0,0,0), Color.FromArgb(0,0,255), Color.FromArgb(255,0,0), Color.FromArgb(255,0,255),
-                               Color.FromArgb(0,255,0), Color.FromArgb(0,255,255), Color.FromArgb(255,255,0), Color.FromArgb(255,255,255)};
             if (PixelON)
                 if ((attr & 64) == 0)
-                    return palette[attr & 7];
+                    return Col[attr & 7];
                 else
-                    return palette[(attr & 7) + 8];
+                    return Col[(attr & 7) + 8];
             else
                 if ((attr & 64) == 0)
-                return palette[(attr & 56) / 8];
+                return Col[(attr & 56) / 8];
             else
-                return palette[(attr & 56) / 8 + 8];
+                return Col[(attr & 56) / 8 + 8];
         }
 
         private void FormView_KeyDown(object sender, KeyEventArgs e)
@@ -135,26 +145,52 @@ namespace ZX_Screen
             {
                 index--;
                 if (index < 0) index = Files.Count() - 1;
-                DrawPicture(Files[index]);
+                OpenPicture(Files[index]);
                 return;
             }
             if (e.KeyCode == Keys.Right | e.KeyCode == Keys.PageDown)
             {
                 index++;
                 if (index > Files.Count() - 1) index = 0;
-                DrawPicture(Files[index]);
+                OpenPicture(Files[index]);
                 return;
             }
             if (e.KeyCode == Keys.Home)
             {
                 index = 0;
-                DrawPicture(Files[index]);
+                OpenPicture(Files[index]);
                 return;
             }
             if (e.KeyCode == Keys.End)
             {
                 index = Files.Count() - 1;
-                DrawPicture(Files[index]);
+                OpenPicture(Files[index]);
+                return;
+            }
+
+            //Изменение пресета палитры
+            if (e.KeyCode == Keys.D1)
+            {
+                Palette.GetPal(ref Col, 0);
+                DrawPicture();
+                return;
+            }
+            if (e.KeyCode == Keys.D2)
+            {
+                Palette.GetPal(ref Col, 1);
+                DrawPicture();
+                return;
+            }
+            if (e.KeyCode == Keys.D3)
+            {
+                Palette.GetPal(ref Col, 2);
+                DrawPicture();
+                return;
+            }
+            if (e.KeyCode == Keys.D4)
+            {
+                Palette.GetPal(ref Col, 3);
+                DrawPicture();
                 return;
             }
             Close();

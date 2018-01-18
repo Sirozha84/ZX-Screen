@@ -22,6 +22,15 @@ namespace ZX_Screen
 
         private void FormOptions_Load(object sender, EventArgs e)
         {
+            //Загрузка пропертисов
+            comboBoxPal.SelectedIndex = Properties.Settings.Default.Palette;
+            PaintButtons();
+        }
+
+        //Раскрасска кнопок
+        void PaintButtons()
+        {
+            buttonCol00.BackColor = Properties.Settings.Default.Col00;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -93,5 +102,6 @@ namespace ZX_Screen
                 MessageBox.Show("Для этого запустите программу с правами администратора.",
                         Application.ProductName);
         }
+
     }
 }
