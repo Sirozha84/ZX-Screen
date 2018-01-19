@@ -54,6 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxPal = new System.Windows.Forms.ComboBox();
             this.buttonOK = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPageAssotiation.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPagePalette.SuspendLayout();
@@ -118,6 +119,7 @@
             // 
             // tabPagePalette
             // 
+            this.tabPagePalette.Controls.Add(this.label4);
             this.tabPagePalette.Controls.Add(this.label3);
             this.tabPagePalette.Controls.Add(this.buttonCol17);
             this.tabPagePalette.Controls.Add(this.buttonCol16);
@@ -156,147 +158,147 @@
             // 
             // buttonCol17
             // 
-            this.buttonCol17.Location = new System.Drawing.Point(209, 62);
+            this.buttonCol17.Location = new System.Drawing.Point(268, 62);
             this.buttonCol17.Name = "buttonCol17";
             this.buttonCol17.Size = new System.Drawing.Size(23, 23);
             this.buttonCol17.TabIndex = 17;
-            this.buttonCol17.Text = "7";
             this.buttonCol17.UseVisualStyleBackColor = true;
+            this.buttonCol17.Click += new System.EventHandler(this.buttonCol17_Click);
             // 
             // buttonCol16
             // 
-            this.buttonCol16.Location = new System.Drawing.Point(180, 62);
+            this.buttonCol16.Location = new System.Drawing.Point(239, 62);
             this.buttonCol16.Name = "buttonCol16";
             this.buttonCol16.Size = new System.Drawing.Size(23, 23);
             this.buttonCol16.TabIndex = 16;
-            this.buttonCol16.Text = "6";
             this.buttonCol16.UseVisualStyleBackColor = true;
+            this.buttonCol16.Click += new System.EventHandler(this.buttonCol16_Click);
             // 
             // buttonCol15
             // 
-            this.buttonCol15.Location = new System.Drawing.Point(151, 62);
+            this.buttonCol15.Location = new System.Drawing.Point(210, 62);
             this.buttonCol15.Name = "buttonCol15";
             this.buttonCol15.Size = new System.Drawing.Size(23, 23);
             this.buttonCol15.TabIndex = 15;
-            this.buttonCol15.Text = "5";
             this.buttonCol15.UseVisualStyleBackColor = true;
+            this.buttonCol15.Click += new System.EventHandler(this.buttonCol15_Click);
             // 
             // buttonCol14
             // 
-            this.buttonCol14.Location = new System.Drawing.Point(122, 62);
+            this.buttonCol14.Location = new System.Drawing.Point(181, 62);
             this.buttonCol14.Name = "buttonCol14";
             this.buttonCol14.Size = new System.Drawing.Size(23, 23);
             this.buttonCol14.TabIndex = 14;
-            this.buttonCol14.Text = "4";
             this.buttonCol14.UseVisualStyleBackColor = true;
+            this.buttonCol14.Click += new System.EventHandler(this.buttonCol14_Click);
             // 
             // buttonCol13
             // 
-            this.buttonCol13.Location = new System.Drawing.Point(93, 62);
+            this.buttonCol13.Location = new System.Drawing.Point(152, 62);
             this.buttonCol13.Name = "buttonCol13";
             this.buttonCol13.Size = new System.Drawing.Size(23, 23);
             this.buttonCol13.TabIndex = 13;
-            this.buttonCol13.Text = "3";
             this.buttonCol13.UseVisualStyleBackColor = true;
+            this.buttonCol13.Click += new System.EventHandler(this.buttonCol13_Click);
             // 
             // buttonCol12
             // 
-            this.buttonCol12.Location = new System.Drawing.Point(64, 62);
+            this.buttonCol12.Location = new System.Drawing.Point(123, 62);
             this.buttonCol12.Name = "buttonCol12";
             this.buttonCol12.Size = new System.Drawing.Size(23, 23);
             this.buttonCol12.TabIndex = 12;
-            this.buttonCol12.Text = "2";
             this.buttonCol12.UseVisualStyleBackColor = true;
+            this.buttonCol12.Click += new System.EventHandler(this.buttonCol12_Click);
             // 
             // buttonCol11
             // 
-            this.buttonCol11.Location = new System.Drawing.Point(35, 62);
+            this.buttonCol11.Location = new System.Drawing.Point(94, 62);
             this.buttonCol11.Name = "buttonCol11";
             this.buttonCol11.Size = new System.Drawing.Size(23, 23);
             this.buttonCol11.TabIndex = 11;
-            this.buttonCol11.Text = "1";
             this.buttonCol11.UseVisualStyleBackColor = true;
+            this.buttonCol11.Click += new System.EventHandler(this.buttonCol11_Click);
             // 
             // buttonCol10
             // 
-            this.buttonCol10.Location = new System.Drawing.Point(6, 62);
+            this.buttonCol10.Location = new System.Drawing.Point(65, 62);
             this.buttonCol10.Name = "buttonCol10";
             this.buttonCol10.Size = new System.Drawing.Size(23, 23);
             this.buttonCol10.TabIndex = 10;
-            this.buttonCol10.Text = "0";
             this.buttonCol10.UseVisualStyleBackColor = true;
+            this.buttonCol10.Click += new System.EventHandler(this.buttonCol10_Click);
             // 
             // buttonCol07
             // 
-            this.buttonCol07.Location = new System.Drawing.Point(209, 33);
+            this.buttonCol07.Location = new System.Drawing.Point(268, 33);
             this.buttonCol07.Name = "buttonCol07";
             this.buttonCol07.Size = new System.Drawing.Size(23, 23);
             this.buttonCol07.TabIndex = 9;
-            this.buttonCol07.Text = "7";
             this.buttonCol07.UseVisualStyleBackColor = true;
+            this.buttonCol07.Click += new System.EventHandler(this.buttonCol07_Click);
             // 
             // buttonCol06
             // 
-            this.buttonCol06.Location = new System.Drawing.Point(180, 33);
+            this.buttonCol06.Location = new System.Drawing.Point(239, 33);
             this.buttonCol06.Name = "buttonCol06";
             this.buttonCol06.Size = new System.Drawing.Size(23, 23);
             this.buttonCol06.TabIndex = 8;
-            this.buttonCol06.Text = "6";
             this.buttonCol06.UseVisualStyleBackColor = true;
+            this.buttonCol06.Click += new System.EventHandler(this.buttonCol06_Click);
             // 
             // buttonCol05
             // 
-            this.buttonCol05.Location = new System.Drawing.Point(151, 33);
+            this.buttonCol05.Location = new System.Drawing.Point(210, 33);
             this.buttonCol05.Name = "buttonCol05";
             this.buttonCol05.Size = new System.Drawing.Size(23, 23);
             this.buttonCol05.TabIndex = 7;
-            this.buttonCol05.Text = "5";
             this.buttonCol05.UseVisualStyleBackColor = true;
+            this.buttonCol05.Click += new System.EventHandler(this.buttonCol05_Click);
             // 
             // buttonCol04
             // 
-            this.buttonCol04.Location = new System.Drawing.Point(122, 33);
+            this.buttonCol04.Location = new System.Drawing.Point(181, 33);
             this.buttonCol04.Name = "buttonCol04";
             this.buttonCol04.Size = new System.Drawing.Size(23, 23);
             this.buttonCol04.TabIndex = 6;
-            this.buttonCol04.Text = "4";
             this.buttonCol04.UseVisualStyleBackColor = true;
+            this.buttonCol04.Click += new System.EventHandler(this.buttonCol04_Click);
             // 
             // buttonCol03
             // 
-            this.buttonCol03.Location = new System.Drawing.Point(93, 33);
+            this.buttonCol03.Location = new System.Drawing.Point(152, 33);
             this.buttonCol03.Name = "buttonCol03";
             this.buttonCol03.Size = new System.Drawing.Size(23, 23);
             this.buttonCol03.TabIndex = 5;
-            this.buttonCol03.Text = "3";
             this.buttonCol03.UseVisualStyleBackColor = true;
+            this.buttonCol03.Click += new System.EventHandler(this.buttonCol03_Click);
             // 
             // buttonCol02
             // 
-            this.buttonCol02.Location = new System.Drawing.Point(64, 33);
+            this.buttonCol02.Location = new System.Drawing.Point(123, 33);
             this.buttonCol02.Name = "buttonCol02";
             this.buttonCol02.Size = new System.Drawing.Size(23, 23);
             this.buttonCol02.TabIndex = 4;
-            this.buttonCol02.Text = "2";
             this.buttonCol02.UseVisualStyleBackColor = true;
+            this.buttonCol02.Click += new System.EventHandler(this.buttonCol02_Click);
             // 
             // buttonCol01
             // 
-            this.buttonCol01.Location = new System.Drawing.Point(35, 33);
+            this.buttonCol01.Location = new System.Drawing.Point(94, 33);
             this.buttonCol01.Name = "buttonCol01";
             this.buttonCol01.Size = new System.Drawing.Size(23, 23);
             this.buttonCol01.TabIndex = 3;
-            this.buttonCol01.Text = "1";
             this.buttonCol01.UseVisualStyleBackColor = true;
+            this.buttonCol01.Click += new System.EventHandler(this.buttonCol01_Click);
             // 
             // buttonCol00
             // 
-            this.buttonCol00.Location = new System.Drawing.Point(6, 33);
+            this.buttonCol00.Location = new System.Drawing.Point(65, 33);
             this.buttonCol00.Name = "buttonCol00";
             this.buttonCol00.Size = new System.Drawing.Size(23, 23);
             this.buttonCol00.TabIndex = 2;
-            this.buttonCol00.Text = "0";
             this.buttonCol00.UseVisualStyleBackColor = true;
+            this.buttonCol00.Click += new System.EventHandler(this.buttonCol00_Click);
             // 
             // label2
             // 
@@ -322,6 +324,7 @@
             this.comboBoxPal.Name = "comboBoxPal";
             this.comboBoxPal.Size = new System.Drawing.Size(290, 21);
             this.comboBoxPal.TabIndex = 0;
+            this.comboBoxPal.SelectedIndexChanged += new System.EventHandler(this.comboBoxPal_SelectedIndexChanged);
             // 
             // buttonOK
             // 
@@ -334,6 +337,15 @@
             this.buttonOK.Text = "Закрыть";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 101);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(392, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "При изменении стандартной палитры она копируется в пользовательскую.";
             // 
             // FormOptions
             // 
@@ -389,5 +401,6 @@
         private System.Windows.Forms.Button buttonCol12;
         private System.Windows.Forms.Button buttonCol11;
         private System.Windows.Forms.Button buttonCol10;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -30,7 +30,22 @@ namespace ZX_Screen
         //Раскрасска кнопок
         void PaintButtons()
         {
-            buttonCol00.BackColor = Properties.Settings.Default.Col00;
+            buttonCol00.BackColor = Palette.GetCol(0);
+            buttonCol01.BackColor = Palette.GetCol(1);
+            buttonCol02.BackColor = Palette.GetCol(2);
+            buttonCol03.BackColor = Palette.GetCol(3);
+            buttonCol04.BackColor = Palette.GetCol(4);
+            buttonCol05.BackColor = Palette.GetCol(5);
+            buttonCol06.BackColor = Palette.GetCol(6);
+            buttonCol07.BackColor = Palette.GetCol(7);
+            buttonCol10.BackColor = Palette.GetCol(8);
+            buttonCol11.BackColor = Palette.GetCol(9);
+            buttonCol12.BackColor = Palette.GetCol(10);
+            buttonCol13.BackColor = Palette.GetCol(11);
+            buttonCol14.BackColor = Palette.GetCol(12);
+            buttonCol15.BackColor = Palette.GetCol(13);
+            buttonCol16.BackColor = Palette.GetCol(14);
+            buttonCol17.BackColor = Palette.GetCol(15);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -103,5 +118,43 @@ namespace ZX_Screen
                         Application.ProductName);
         }
 
+        private void comboBoxPal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Palette.SetPreset(comboBoxPal.SelectedIndex);
+            PaintButtons();
+        }
+
+        void SetColor(byte num)
+        {
+            ColorDialog diag = new ColorDialog();
+            if (diag.ShowDialog() == DialogResult.OK)
+            {
+                if (comboBoxPal.SelectedIndex != 3)
+                {
+                    //Копируем цвета из текущей палитры в пользовательскую
+                    Palette.CopyPal(num);
+                    comboBoxPal.SelectedIndex = 3;
+                }
+                Palette.SetColor(num, diag.Color);
+                PaintButtons();
+            }
+        }
+
+        private void buttonCol00_Click(object sender, EventArgs e) { SetColor(0); }
+        private void buttonCol01_Click(object sender, EventArgs e) { SetColor(1); }
+        private void buttonCol02_Click(object sender, EventArgs e) { SetColor(2); }
+        private void buttonCol03_Click(object sender, EventArgs e) { SetColor(3); }
+        private void buttonCol04_Click(object sender, EventArgs e) { SetColor(4); }
+        private void buttonCol05_Click(object sender, EventArgs e) { SetColor(5); }
+        private void buttonCol06_Click(object sender, EventArgs e) { SetColor(6); }
+        private void buttonCol07_Click(object sender, EventArgs e) { SetColor(7); }
+        private void buttonCol10_Click(object sender, EventArgs e) { SetColor(8); }
+        private void buttonCol11_Click(object sender, EventArgs e) { SetColor(9); }
+        private void buttonCol12_Click(object sender, EventArgs e) { SetColor(10); }
+        private void buttonCol13_Click(object sender, EventArgs e) { SetColor(11); }
+        private void buttonCol14_Click(object sender, EventArgs e) { SetColor(12); }
+        private void buttonCol15_Click(object sender, EventArgs e) { SetColor(13); }
+        private void buttonCol16_Click(object sender, EventArgs e) { SetColor(14); }
+        private void buttonCol17_Click(object sender, EventArgs e) { SetColor(15); }
     }
 }

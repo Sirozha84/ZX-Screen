@@ -9,7 +9,7 @@ namespace ZX_Screen
 {
     static class Palette
     {
-        static byte Preset;
+        static int Preset;
         static Color[,] Col;
 
         //Инициализация палитр
@@ -57,7 +57,49 @@ namespace ZX_Screen
         {
             Preset = num;
             GetPal(ref col);
+            Properties.Settings.Default.Palette = Preset;
             Properties.Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// Выбор активного пресета
+        /// </summary>
+        /// <param name="num"></param>
+        public static void SetPreset(int num)
+        {
+            Preset = num;
+            Properties.Settings.Default.Palette = Preset;
+            Properties.Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// Получение цвета по индексу из текущей палитры
+        /// </summary>
+        /// <param name="num"></param>
+        public static Color GetCol(byte num)
+        {
+            return Col[Preset, num];
+        }
+
+        /// <summary>
+        /// Установка цвета
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="col"></param>
+        public static void SetColor(byte num, Color col)
+        {
+            Col[3, num] = col; 
+        }
+
+        /// <summary>
+        /// Копирование палитры из текущей в пользовательскую
+        /// </summary>
+        /// <param name="num">Номер цвета, который пропускается</param>
+        public static void CopyPal(byte num)
+        {
+            for (int i = 0; i < 15; i++)
+                if (num != i)
+                    Col[3, i] = Col[Preset, i];
         }
     }
 }

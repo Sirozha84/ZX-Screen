@@ -17,7 +17,7 @@
     <Setting Name="Height" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">500</Value>
     </Setting>
-    <Setting Name="Palette" Type="System.Byte" Scope="User">
+    <Setting Name="Palette" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Col00" Type="System.Drawing.Color" Scope="User">

@@ -86,9 +86,9 @@ namespace ZX_Screen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public byte Palette {
+        public int Palette {
             get {
-                return ((byte)(this["Palette"]));
+                return ((int)(this["Palette"]));
             }
             set {
                 this["Palette"] = value;
