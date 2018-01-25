@@ -32,6 +32,13 @@ namespace ZX_Screen
                     item.SubItems.Add("SCR");
                     Explorer.Items.Add(item);
                 }
+                if (Path.GetExtension(file).ToLower() == ".img")
+                {
+                    ListViewItem item = new ListViewItem(Path.GetFileNameWithoutExtension(file));
+                    item.ImageIndex = 1;
+                    item.SubItems.Add("IMG");
+                    Explorer.Items.Add(item);
+                }
             }
         }
 
@@ -54,6 +61,12 @@ namespace ZX_Screen
             if (item.SubItems[1].Text == "SCR")
             {
                 FormView view = new FormView(Locate + "\\" + item.Text + ".scr");
+                if (view.ShowDialog() == DialogResult.Abort)
+                    ReadDir();
+            }
+            if (item.SubItems[1].Text == "IMG")
+            {
+                FormView view = new FormView(Locate + "\\" + item.Text + ".img");
                 if (view.ShowDialog() == DialogResult.Abort)
                     ReadDir();
             }
@@ -89,7 +102,7 @@ namespace ZX_Screen
             {
                 Locate = dir;
             }
-                ReadDir();
+            ReadDir();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e) { вверхToolStripMenuItem1_Click(null, null); }

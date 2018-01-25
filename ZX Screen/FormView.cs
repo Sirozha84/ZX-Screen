@@ -43,6 +43,7 @@ namespace ZX_Screen
         byte[] Data;
         string[] Files;
         int index;
+        byte Type;
 
         public FormView(string File)
         {
@@ -73,6 +74,8 @@ namespace ZX_Screen
                 DialogResult = DialogResult.Abort;
                 Close();
             }
+            Type = 1;
+            if (Path.GetExtension(File).ToLower() == ".img") Type = 2;
             DrawPicture();
         }
 
@@ -81,36 +84,68 @@ namespace ZX_Screen
         /// </summary>
         void DrawPicture()
         {
-            Bitmap screen = new Bitmap(256, 192);
-            //Подготовка поля (на случай если данных меньше чем входит в видеопамять
-            byte[] m = new byte[6912];
-            for (int i = 6144; i < 6912; i++) m[i] = 56;
-            for (int i = 0; i < 6912; i++)
+            Bitmap Screen = new Bitmap(256, 192);
+            //Сделаем разные загрузки исходя из типа (на вырост, если повезёт)
+            if (Type == 1 | Type == 2)
             {
-                int a = i;
-                if (a >= 0 & a <= Data.Count() - 1)
-                    m[i] = Data[a];
-            }
-            //Собственно, рисование
-            byte C = 0;
-            for (int y = 0; y < 191; y++)
-            {
-                for (int x = 0; x < 32; x++)
+                //Подготовка поля (на случай если данных меньше чем входит в видеопамять
+                byte[,] m = new byte[Type, 6912];
+                for (int s = 0; s < Type; s++)
                 {
-                    byte B = m[Adresses[y] - 16384 + x];
-                    C = m[6144 + x + (y / 8) * 32];
-                    screen.SetPixel(x * 8, y, Pixel(C, (B & 128) == 128));
-                    screen.SetPixel(x * 8 + 1, y, Pixel(C, (B & 64) == 64));
-                    screen.SetPixel(x * 8 + 2, y, Pixel(C, (B & 32) == 32));
-                    screen.SetPixel(x * 8 + 3, y, Pixel(C, (B & 16) == 16));
-                    screen.SetPixel(x * 8 + 4, y, Pixel(C, (B & 8) == 8));
-                    screen.SetPixel(x * 8 + 5, y, Pixel(C, (B & 4) == 4));
-                    screen.SetPixel(x * 8 + 6, y, Pixel(C, (B & 2) == 2));
-                    screen.SetPixel(x * 8 + 7, y, Pixel(C, (B & 1) == 1));
+                    for (int i = 6144; i < 6912; i++) m[s, i] = 56;
+                    for (int i = 0; i < 6912; i++)
+                    {
+                        int a = i + s * 6912;
+                        if (a >= 0 & a <= Data.Count() - 1)
+                            m[s, i] = Data[a];
+                    }
                 }
+                //Составление матрицы точек
+                int[,,] Pixels = new int[Type, 256, 192];
+                for (int s = 0; s < Type; s++)
+                {
+                    byte C = 0;
+                    for (int y = 0; y < 192; y++)
+                    {
+                        for (int x = 0; x < 32; x++)
+                        {
+                            byte B = m[s, Adresses[y] - 16384 + x];
+                            C = m[s, 6144 + x + (y / 8) * 32];
+                            Pixels[s, x * 8, y] = Pixel(C, (B & 128) == 128);
+                            Pixels[s, x * 8 + 1, y] = Pixel(C, (B & 64) == 64);
+                            Pixels[s, x * 8 + 2, y] = Pixel(C, (B & 32) == 32);
+                            Pixels[s, x * 8 + 3, y] = Pixel(C, (B & 16) == 16);
+                            Pixels[s, x * 8 + 4, y] = Pixel(C, (B & 8) == 8);
+                            Pixels[s, x * 8 + 5, y] = Pixel(C, (B & 4) == 4);
+                            Pixels[s, x * 8 + 6, y] = Pixel(C, (B & 2) == 2);
+                            Pixels[s, x * 8 + 7, y] = Pixel(C, (B & 1) == 1);
+                        }
+                    }
+                }
+                //Собственно, рисование
+                if (Type == 1)
+                    for (int x = 0; x < 256; x++)
+                        for (int y = 0; y < 192; y++)
+                            Screen.SetPixel(x, y, Col[Pixels[0, x, y]]);
+                else
+                    for (int x = 0; x < 256; x++)
+                        for (int y = 0; y < 192; y++)
+                            Screen.SetPixel(x, y, AVCol(Pixels[0, x, y], Pixels[1, x, y]));
             }
-            pictureBox1.Image = screen;
+            pictureBox1.Image = Screen;
+        }
 
+        /// <summary>
+        /// Возвращает смешанный цвет по двум индексам
+        /// </summary>
+        /// <param name="i1"></param>
+        /// <param name="i2"></param>
+        /// <returns></returns>
+        Color AVCol(int i1, int i2)
+        {
+            return Color.FromArgb((Col[i1].R + Col[i2].R) / 2,
+                                  (Col[i1].G + Col[i2].G) / 2,
+                                  (Col[i1].B + Col[i2].B) / 2);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -118,23 +153,19 @@ namespace ZX_Screen
             Close();
         }
 
-        //Просмотр в виде картинки
-        void ViewScreen()
-        {
-        }
         //Возвращает цвет точки по атрибуту (в зависимости включен пиксель или нет)
-        Color Pixel(byte attr, bool PixelON)
+        int Pixel(byte attr, bool PixelON)
         {
             if (PixelON)
                 if ((attr & 64) == 0)
-                    return Col[attr & 7];
+                    return attr & 7;
                 else
-                    return Col[(attr & 7) + 8];
+                    return (attr & 7) + 8;
             else
                 if ((attr & 64) == 0)
-                return Col[(attr & 56) / 8];
+                return (attr & 56) / 8;
             else
-                return Col[(attr & 56) / 8 + 8];
+                return (attr & 56) / 8 + 8;
         }
 
         private void FormView_KeyDown(object sender, KeyEventArgs e)

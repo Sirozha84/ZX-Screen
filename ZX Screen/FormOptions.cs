@@ -103,7 +103,8 @@ namespace ZX_Screen
             {
                 try
                 {
-                    if (checkBoxSCR.Checked) Associate(".scr", "Изображение ZX Screen", "Up");
+                    if (checkBoxSCR.Checked) Associate(".scr", "Изображение ZX Screen", "");
+                    if (checkBoxSCR.Checked) Associate(".img", "Изображение ZX Screen", "");
                     MessageBox.Show("Ассоциация выполнена успешно.",
                         Application.ProductName);
                 }

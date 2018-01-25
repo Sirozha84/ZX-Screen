@@ -34,6 +34,7 @@
             this.checkBoxSCR = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPagePalette = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonCol17 = new System.Windows.Forms.Button();
             this.buttonCol16 = new System.Windows.Forms.Button();
@@ -54,7 +55,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxPal = new System.Windows.Forms.ComboBox();
             this.buttonOK = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.checkBoxIMG = new System.Windows.Forms.CheckBox();
             this.tabPageAssotiation.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPagePalette.SuspendLayout();
@@ -62,6 +63,7 @@
             // 
             // tabPageAssotiation
             // 
+            this.tabPageAssotiation.Controls.Add(this.checkBoxIMG);
             this.tabPageAssotiation.Controls.Add(this.buttonAssociacion);
             this.tabPageAssotiation.Controls.Add(this.label1);
             this.tabPageAssotiation.Controls.Add(this.checkBoxSCR);
@@ -75,7 +77,7 @@
             // 
             // buttonAssociacion
             // 
-            this.buttonAssociacion.Location = new System.Drawing.Point(9, 42);
+            this.buttonAssociacion.Location = new System.Drawing.Point(9, 74);
             this.buttonAssociacion.Name = "buttonAssociacion";
             this.buttonAssociacion.Size = new System.Drawing.Size(126, 23);
             this.buttonAssociacion.TabIndex = 2;
@@ -97,7 +99,7 @@
             this.checkBoxSCR.AutoSize = true;
             this.checkBoxSCR.Checked = true;
             this.checkBoxSCR.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxSCR.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxSCR.Location = new System.Drawing.Point(9, 28);
             this.checkBoxSCR.Name = "checkBoxSCR";
             this.checkBoxSCR.Size = new System.Drawing.Size(48, 17);
             this.checkBoxSCR.TabIndex = 0;
@@ -146,6 +148,15 @@
             this.tabPagePalette.TabIndex = 1;
             this.tabPagePalette.Text = "Палитра";
             this.tabPagePalette.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 101);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(392, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "При изменении стандартной палитры она копируется в пользовательскую.";
             // 
             // label3
             // 
@@ -338,14 +349,17 @@
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // label4
+            // checkBoxIMG
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 101);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(392, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "При изменении стандартной палитры она копируется в пользовательскую.";
+            this.checkBoxIMG.AutoSize = true;
+            this.checkBoxIMG.Checked = true;
+            this.checkBoxIMG.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxIMG.Location = new System.Drawing.Point(9, 51);
+            this.checkBoxIMG.Name = "checkBoxIMG";
+            this.checkBoxIMG.Size = new System.Drawing.Size(46, 17);
+            this.checkBoxIMG.TabIndex = 3;
+            this.checkBoxIMG.Text = "IMG";
+            this.checkBoxIMG.UseVisualStyleBackColor = true;
             // 
             // FormOptions
             // 
@@ -402,5 +416,6 @@
         private System.Windows.Forms.Button buttonCol11;
         private System.Windows.Forms.Button buttonCol10;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBoxIMG;
     }
 }

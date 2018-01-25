@@ -44,7 +44,7 @@ namespace ZX_Screen
         public static void GetPal(ref Color[] col)
         {
             col = new Color[16];
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 16; i++)
                 col[i] = Col[Preset, i];
         }
 
@@ -97,7 +97,7 @@ namespace ZX_Screen
         /// <param name="num">Номер цвета, который пропускается</param>
         public static void CopyPal(byte num)
         {
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 16; i++)
                 if (num != i)
                     Col[3, i] = Col[Preset, i];
         }
