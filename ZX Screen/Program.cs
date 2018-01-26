@@ -6,7 +6,7 @@ namespace ZX_Screen
 {
     static class Program
     {
-        public static string Date = "09.12.2017";
+        public static string Date = "26.01.2018";
         public static string Site = "www.sg-software.ru";
         public static string Url = "http://www.sg-software.ru";
         /// <summary>

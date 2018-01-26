@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("ZX Screen")]
-[assembly: AssemblyDescription("Просмор изображений ZX Spectrum в формате SCR")]
+[assembly: AssemblyDescription("Просмор изображений ZX Spectrum в формате SCR и IMG")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SG Software")]
 [assembly: AssemblyProduct("ZX Screen")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер сборки и номер редакции по умолчанию.
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
